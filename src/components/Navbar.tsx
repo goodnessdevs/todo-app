@@ -1,11 +1,9 @@
 import Link from "next/link";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 import Image from "next/image";
 
