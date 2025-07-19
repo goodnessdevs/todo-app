@@ -5,10 +5,14 @@ import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/sonner"
 import Footer from "@/components/Footer";
 
-const nunito = Nunito();
+const nunito = Nunito({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  preload: true,
+});
 
 export const metadata: Metadata = {
-  title: "Todo App",
+  title: "Geetask",
   description: "A simple application to manage your tasks.",
   icons: {
     icon: "/logo.png",
