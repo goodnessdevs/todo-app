@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 
 const nunito = Nunito({
   subsets: ['latin'],
-  weight: ['400', '700'],
   preload: true,
 });
 
