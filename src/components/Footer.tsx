@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 mt-auto">
+    <footer className="bg-black mt-auto">
       <div className=" text-white py-12 text-center">
         <p className="text-2xs">
           &copy; {new Date().getFullYear()} Todo App. All rights reserved.

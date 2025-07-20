@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: "A simple application to manage your tasks.",
   icons: {
     icon: "/logo.png",
-  },
+  }
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className={`${nunito.className} antialiased min-h-screen flex flex-col`}>
           <Navbar />
           <main className="z-10 py-16 flex-grow">{children}</main>

@@ -104,13 +104,13 @@ export default function Home() {
       <h1 className="text-4xl font-bold text-center mt-10">
         Welcome to the Todo App
       </h1>
-      <p className="text-gray-400 text-center mt-2 text-xl">
+      <p className="text-gray-600 text-center mt-2 text-xl">
         This is a simple application to manage your tasks.
       </p>
 
-      <Card className="dark:bg-gray-800 bg-white max-w-md mx-auto mt-10 shadow-lg">
+      <Card className="dark:bg-gray-800 text-gray-950 bg-white max-w-md mx-auto mt-8 shadow-lg">
         <CardHeader>
-          <CardTitle className="tracking-widest">Create a Task</CardTitle>
+          <CardTitle className="tracking-wide font-semibold text-xl">Create a Task</CardTitle>
           <CardDescription>
             Use the form below to add a new task to your todo list.
           </CardDescription>
@@ -196,22 +196,9 @@ export default function Home() {
                   </Popover>
                 </div>
               </div>
-
-              {/* <div className="flex flex-col gap-3">
-                <Label htmlFor="time-picker" className="px-1">
-                  Time
-                </Label>
-                <Input
-                  type="time"
-                  id="time-picker"
-                  step="1"
-                  defaultValue="00:00:00"
-                  className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
-                />
-              </div> */}
             </div>
 
-            <Button type="submit" className="font-semibold">
+            <Button type="submit" className="font-semibold bg-blue-700 hover:bg-blue-900">
               Add Task
             </Button>
           </form>
