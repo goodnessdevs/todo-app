@@ -4,6 +4,10 @@ import { Quicksand } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import LayoutWrapper from "../components/LayoutWrappers";
 
+const quicksand = Quicksand({
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Geetask",
   description: "A simple application to manage your tasks.",
@@ -11,10 +15,6 @@ export const metadata: Metadata = {
     icon: "/logo.png",
   },
 };
-
-const quicksand = Quicksand({
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,
