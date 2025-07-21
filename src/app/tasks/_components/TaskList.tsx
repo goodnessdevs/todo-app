@@ -127,9 +127,6 @@ export default function Task() {
                 >
                   <Trash />
                 </Button>
-                <Button>
-                  <Edit3 />
-                </Button>
               </div>
             </div>
           </Card>
