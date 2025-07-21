@@ -17,10 +17,10 @@ export default function Home() {
     setIsLoggedIn(!!token);
   }, []);
 
-  if (!hasMounted) return <Spinner />;
+  if (!hasMounted) return <div className="mt-20"><Spinner /></div>;
 
   return (
-    <div className="my-28 md:mx-40">
+    <div className="my-28 md:mx-40 px-10 md:px-0">
       <div className="md:flex mb-40 justify-center items-center space-x-20">
         <div className="w-md text-center md:text-start space-y-4">
           <h1 className="text-7xl font-bold">Build your Todo List</h1>
