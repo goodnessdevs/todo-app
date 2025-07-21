@@ -1,35 +1,32 @@
 import type { Metadata } from "next";
-import { Nunito } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import { Quicksand } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner"
-import Footer from "@/components/Footer";
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  preload: true,
-});
+import LayoutWrapper from "../components/LayoutWrappers";
 
 export const metadata: Metadata = {
   title: "Geetask",
   description: "A simple application to manage your tasks.",
   icons: {
     icon: "/logo.png",
-  }
+  },
 };
+
+const quicksand = Quicksand({
+  subsets: ['latin'],
+  preload: true,
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${nunito.className} antialiased min-h-screen flex flex-col`}>
-          <Navbar />
-          <main className="z-10 py-16 flex-grow">{children}</main>
-          <Footer />
-          <Toaster richColors closeButton />
+    <html lang="en">
+      <body className={`${quicksand.className} antialiased min-h-screen flex flex-col`}>
+        <LayoutWrapper>{children}</LayoutWrapper>
+        <Toaster richColors position="top-right" />
       </body>
     </html>
   );
