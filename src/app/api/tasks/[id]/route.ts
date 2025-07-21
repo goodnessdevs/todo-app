@@ -3,15 +3,17 @@ import { prisma } from "@/lib/prisma";
 
 export async function PATCH(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: { params: Promise<Record<string, string>> } 
 ) {
   const { id } = await context.params;
+
   const { completed } = await req.json();
 
   try {
+    
     const updated = await prisma.task.update({
-      where: { id },
-      data: { completed },
+      where: { id }, // Find the task by its ID
+      data: { completed }, // Update its 'completed' status
     });
 
     return NextResponse.json(updated);
