@@ -6,6 +6,8 @@ import LayoutWrapper from "../components/LayoutWrappers";
 
 const quicksand = Quicksand({
   subsets: ["latin"],
+  preload: true,
+  variable: "--font-quicksand",
 });
 
 export const metadata: Metadata = {
