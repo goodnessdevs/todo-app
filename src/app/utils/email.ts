@@ -34,6 +34,7 @@ export const sendWelcomeEmail = async (email: string, name: string) => {
   });
 };
 
+
 export const sendResetPasswordEmail = async (email: string, resetURL: string) => {
   const html = PASSWORD_RESET_EMAIL_TEMPLATE
     .replace("{resetURL}", resetURL)
