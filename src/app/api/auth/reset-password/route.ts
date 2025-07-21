@@ -46,7 +46,7 @@ export async function PATCH(
       },
     });
 
-    await sendResetPasswordSuccessEmail(user.email, user.username);
+    await sendResetPasswordSuccessEmail(user.email, user.name);
 
     return NextResponse.json({
       success: true,
