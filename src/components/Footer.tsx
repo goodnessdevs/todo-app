@@ -10,9 +10,9 @@ export default function Footer() {
           <p className="text-sm mt-2">
             © {new Date().getFullYear()} Geetask. All rights reserved.
           </p>
-          <p className="text-sm mt-1">
+          {/* <p className="text-sm mt-1">
             Built with <span className="text-blue-500">Next.js</span> & <span className="text-purple-400">Prisma</span>
-          </p>
+          </p> */}
         </div>
 
         {/* Right Section */}

@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { MobileNavbar } from "./MobileNavbar";
 
 export default function LayoutWrapper({
   children,
@@ -14,6 +15,7 @@ export default function LayoutWrapper({
   
   return (
     <>
+      {!shouldHide && <MobileNavbar />}
       {!shouldHide && <Navbar />}
       <main className="z-10 py-16 flex-grow">{children}</main>
       {!shouldHide && <Footer />}
