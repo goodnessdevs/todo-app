@@ -27,8 +27,7 @@ export default function RootLayout({
       <body
         className={`${quicksand.className} antialiased min-h-screen flex flex-col`}
       ><LayoutWrapper>{children}</LayoutWrapper>
-        <Toaster richColors position="top-center" />
-        
+        <Toaster richColors position="top-center" duration={1000} />
       </body>
     </html>
   );

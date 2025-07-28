@@ -107,9 +107,10 @@ export default function SheetNavbar() {
                   Sign out <LogOut className="text-white w-4 h-4" />
                 </DialogTrigger>
 
-                <DialogContent className="space-y-4 w-sm">
+
+                <DialogContent className="space-y-4 w-sm ">
                   <DialogHeader>
-                    <DialogTitle className="text-center">
+                    <DialogTitle className="text-center mt-5">
                       Are you sure you want to leave?
                     </DialogTitle>
                   </DialogHeader>

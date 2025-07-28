@@ -1,9 +1,9 @@
-import LoginForm from "@/app/login/_components/LoginForm";
+import LoginForm from "@/app/login/components/LoginForm";
 import { Separator } from "@/components/ui/separator";
 
 export default function SignInPage() {
   return (
-    <div className="h-full flex items-center justify-center">
+    <div className="h-full flex items-center justify-center p-10">
       <div>
         <h2 className="text-2xl text-center font-semibold mb-6 text-blue-800">
           Geetask

@@ -1,4 +1,4 @@
-import SignupForm from "@/app/signup/_components/SignupForm";
+import SignupForm from "@/app/signup/components/SignupForm";
 import { Separator } from "@/components/ui/separator";
 
 export default function SignInPage() {
