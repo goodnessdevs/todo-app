@@ -1,4 +1,4 @@
-import SignupForm from "@/components/SignupForm";
+import SignupForm from "@/app/signup/_components/SignupForm";
 import { Separator } from "@/components/ui/separator";
 
 export default function SignInPage() {
@@ -12,7 +12,7 @@ export default function SignInPage() {
 
         <SignupForm />
 
-        <p className="text-sm mt-2 text-center font-semibold text-gray-900">
+        <p className="text-sm mt-4 text-center font-semibold text-gray-900">
           © {new Date().getFullYear()} Geetask. All rights reserved.
         </p>
       </div>

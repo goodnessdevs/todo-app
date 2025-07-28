@@ -15,12 +15,12 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import Image from "next/image";
 import { Loader2, LogOut, User } from "lucide-react";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Brand from "./Brand";
 
 export default function Navbar() {
   const [loading, setLoading] = useState(false);
@@ -55,17 +55,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed z-50 w-full hidden md:flex items-center justify-evenly p-4 bg-blue-900 text-white">
-      <div className="flex items-center space-x-2">
-        <Image
-          src="/logo.png"
-          alt="Logo"
-          quality={100}
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
-        <h1 className="text-2xl font-semibold">Geetask</h1>
-      </div>
+      <Brand />
 
       <NavigationMenu>
         <NavigationMenuList className="flex items-center font-semibold space-x-4">
@@ -84,6 +74,12 @@ export default function Navbar() {
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link href="/tasks">Tasks</Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Link href="/account">Account</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
 

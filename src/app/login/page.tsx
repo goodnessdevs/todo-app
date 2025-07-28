@@ -1,4 +1,4 @@
-import LoginForm from "@/components/LoginForm";
+import LoginForm from "@/app/login/_components/LoginForm";
 import { Separator } from "@/components/ui/separator";
 
 export default function SignInPage() {
@@ -12,7 +12,7 @@ export default function SignInPage() {
 
         <LoginForm />
 
-        <p className="text-sm mt-2 text-center font-semibold text-gray-900">
+        <p className="text-sm mt-4 text-center font-semibold text-gray-900">
           © {new Date().getFullYear()} Geetask. All rights reserved.
         </p>
       </div>

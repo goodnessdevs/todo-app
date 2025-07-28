@@ -36,6 +36,7 @@ export default function SignupForm() {
 
       if (res.ok) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
         toast.success("Signup successful!");
         router.push("/");
       } else {

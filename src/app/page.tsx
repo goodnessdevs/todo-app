@@ -21,8 +21,8 @@ export default function Home() {
 
   return (
     <div className="my-20 md:my-28 md:mx-40 px-10 md:px-0">
-      <div className="md:flex mb-40 justify-start items-center space-x-20">
-        <div className="w-md text-start space-y-4">
+      <div className="md:flex mb-44 justify-start items-center md:gap-x-20">
+        <div className="md:text-start text-center space-y-6">
           <h1 className="text-7xl font-bold">Build your Todo List</h1>
           <p className="text-gray-700 text-2xl">
             A simple application to manage your tasks.
@@ -43,7 +43,7 @@ export default function Home() {
           )}
         </div>
 
-        <div className="hidden md:block w-1/2">
+        <div className="hidden md:block">
           <Image
             src="/brand.png"
             alt="Logo"

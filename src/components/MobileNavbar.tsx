@@ -1,7 +1,6 @@
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -21,10 +20,12 @@ import {
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Brand from "./Brand";
 
 export default function SheetNavbar() {
   const [loading, setLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -53,56 +54,56 @@ export default function SheetNavbar() {
     }
   };
 
+  const handleSheetVisibility = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger>
         <Menu className="text-white" />
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Menu</SheetTitle>
         </SheetHeader>
 
-        <Separator className="" />
+        <Separator />
 
-        <div className="space-y-2 p-4 bg-white font-semibold rounded-xl w-full">
-          <Link
-            href="/"
-            className="block px-4 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition-colors font-medium"
-          >
-            Home
+        <div className="space-y-4 p-4 bg-white font-semibold rounded-xl w-full">
+          <Link href="/">
+            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              Home
+            </Button>
           </Link>
-          <Link
-            href="/create"
-            className="block px-4 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition-colors font-medium"
-          >
-            Create
+          <Link href="/create">
+            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              Create
+            </Button>
           </Link>
-          <Link
-            href="/tasks"
-            className="block px-4 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition-colors font-medium"
-          >
-            Tasks
+          <Link href="/tasks">
+            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              Tasks
+            </Button>
           </Link>
-          <Link
-            href="/contact"
-            className="block px-4 py-2 rounded-lg hover:bg-blue-100 hover:text-blue-600 transition-colors font-medium"
-          >
-            Contact
+          <Link href="/account">
+            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              Account
+            </Button>
           </Link>
 
           {!isLoggedIn ? (
-            <div className="mt-4 mx-4">
+            <div className="mt-8 ">
               <Link href="/login">
-                <Button className="bg-white text-blue-950 flex justify-between items-center gap-x-2">
-                  Sign in <User className="text-blue-800 w-4 h-4" />
+                <Button className="text-center w-full text-white flex justify-center items-center gap-x-2">
+                  Sign in <User className="text-blue-500 w-4 h-4" />
                 </Button>
               </Link>
             </div>
           ) : (
-            <div className="ms-4 mt-4">
+            <div className="mt-8">
               <Dialog>
-                <DialogTrigger className="flex justify-between items-center rounded-md p-1.5 gap-x-2 bg-blue-800 text-white">
+                <DialogTrigger className="text-center w-full flex justify-center items-center rounded-md p-1.5 gap-x-2 bg-slate-900 hover:bg-slate-700 text-white">
                   Sign out <LogOut className="text-white w-4 h-4" />
                 </DialogTrigger>
 
@@ -143,7 +144,7 @@ export default function SheetNavbar() {
 export function MobileNavbar() {
   return (
     <div className="md:hidden flex items-center justify-between p-4 bg-blue-900 shadow-md dark:bg-zinc-950">
-      <h2 className="text-white text-xl font-semibold">Geetask</h2>
+      <Brand />
       <SheetNavbar />
     </div>
   );

@@ -3,19 +3,30 @@ import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
+import { z } from "zod";
+
+// Define schema
+const signupSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  email: z.string().email('Invalid email'),
+  password: z.string().min(8, "Password must be at least 8 characters long"),
+});
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const { name, email, password } = body;
 
-  if (!name || !email || !password) {
+  // Validate input
+  const result = signupSchema.safeParse(body);
+  if (!result.success) {
     return NextResponse.json(
-      { error: "All fields are required" },
+      { errors: result.error.flatten().fieldErrors },
       { status: 400 }
     );
   }
+
+  const { name, email, password } = result.data;
 
   try {
     const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -42,7 +53,7 @@ export async function POST(req: Request) {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       path: "/",
-      maxAge: 60 * 60 * 24, // 1 day
+      maxAge: 60 * 60 * 24 * 7,
     });
 
     return NextResponse.json(
@@ -55,7 +66,7 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error(err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
   }
