@@ -6,9 +6,9 @@ import { sendResetPasswordSuccessEmail } from "@/emails/email";
 
 export async function PATCH(
   req: NextRequest,
-  context: { params: { token: string } }
+  { params }: { params: { token: string } }
 ) {
-  const { token } = context.params;
+  const token = params.token;
 
   const { password } = await req.json();
 
