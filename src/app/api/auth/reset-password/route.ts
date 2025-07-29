@@ -6,11 +6,8 @@ import { sendResetPasswordSuccessEmail } from "@/emails/email";
 
 export async function PATCH(
   req: NextRequest,
-  context: { params: Record<string, string> } // ✅ Correct type for dynamic routes
 ) {
-  const token = context.params.token;
-
-  const { password } = await req.json();
+  const { token, password } = await req.json();
 
   if (!token || !password) {
     return NextResponse.json(
