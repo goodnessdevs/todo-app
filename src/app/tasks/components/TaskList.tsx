@@ -1,6 +1,7 @@
 "use client";
 
 import Spinner from "@/components/Spinner";
+import confetti from "canvas-confetti";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -83,6 +84,11 @@ export default function Task() {
             task.id === taskId ? { ...task, completed: !currentStatus } : task
           )
         );
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { x: 0.5, y: 0.3 },
+        });
         toast.success("Task updated");
       } else {
         toast.error("Failed to update task");
@@ -96,7 +102,9 @@ export default function Task() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
       {loading ? (
-        <div className="flex justify-center items-center"><Spinner /> Loading...</div>
+        <div className="flex justify-center items-center">
+          <Spinner /> Loading...
+        </div>
       ) : (
         tasks.map((task) => (
           <Card key={task.id} className="mb-4 w-sm md:w-md mx-auto">
