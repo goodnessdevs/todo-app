@@ -6,9 +6,9 @@ import { sendResetPasswordSuccessEmail } from "@/emails/email";
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { token: string } }
+  context: { params: Record<string, string> } // ✅ Correct type for dynamic routes
 ) {
-  const token = params.token;
+  const token = context.params.token;
 
   const { password } = await req.json();
 
@@ -20,8 +20,10 @@ export async function PATCH(
   }
 
   try {
+    // Hash the token to match the one stored in DB
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
 
+    // Find the user by the hashed reset token and check expiration
     const user = await prisma.user.findFirst({
       where: {
         resetPasswordToken: hashedToken,
@@ -36,8 +38,10 @@ export async function PATCH(
       );
     }
 
+    // Hash the new password
     const hashedPassword = await bcryptjs.hash(password, 10);
 
+    // Update the user's password and clear reset token fields
     await prisma.user.update({
       where: { id: user.id },
       data: {
@@ -47,6 +51,7 @@ export async function PATCH(
       },
     });
 
+    // Optionally send confirmation email
     await sendResetPasswordSuccessEmail(user.email, user.name);
 
     return NextResponse.json({
@@ -54,7 +59,7 @@ export async function PATCH(
       message: "Password reset successful",
     });
   } catch (error) {
-    console.error("Error resetting password", error);
+    console.error("Error resetting password:", error);
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
