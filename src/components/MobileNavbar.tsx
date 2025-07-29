@@ -5,7 +5,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Loader2, LogOut, Menu, User } from "lucide-react";
+import { Home, ListTodo, Loader2, LogOut, Menu, Plus, User } from "lucide-react";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
@@ -72,23 +72,23 @@ export default function SheetNavbar() {
 
         <div className="space-y-4 p-4 bg-white font-semibold rounded-xl w-full">
           <Link href="/">
-            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
-              Home
+            <Button onClick={handleSheetVisibility} className="flex justify-start px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              <Home /> Home
             </Button>
           </Link>
           <Link href="/create">
-            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
-              Create
+            <Button onClick={handleSheetVisibility} className="flex justify-start px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              <Plus /> Create
             </Button>
           </Link>
           <Link href="/tasks">
-            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
-              Tasks
+            <Button onClick={handleSheetVisibility} className="flex justify-start px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              <ListTodo /> Tasks
             </Button>
           </Link>
           <Link href="/account">
-            <Button onClick={handleSheetVisibility} className="block px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
-              Account
+            <Button onClick={handleSheetVisibility} className="flex justify-start px-4 py-2 rounded-lg mb-4 bg-blue-800 cursor-pointer hover:bg-blue-100 w-full text-start hover:text-blue-600 transition-colors font-medium">
+              <User /> Account
             </Button>
           </Link>
 

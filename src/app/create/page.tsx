@@ -114,8 +114,8 @@ export default function Create() {
   };
 
   return (
-    <div className="my-20">
-      <Card className="dark:bg-gray-800 text-gray-950 bg-white max-w-md mx-auto mt-8 shadow-lg">
+    <div className="mb-20 mt-10 md:mt-20">
+      <Card className="dark:bg-gray-800 text-gray-950 bg-white w-sm md:w-2xl mx-auto mt-8 shadow-2xl">
         <CardHeader>
           <CardTitle className="tracking-wide font-semibold text-xl">
             Create a Task

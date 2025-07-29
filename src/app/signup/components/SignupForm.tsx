@@ -54,7 +54,7 @@ export default function SignupForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-md mx-auto space-y-5 p-6 border rounded-xl shadow-sm bg-white dark:bg-zinc-950"
+      className="w-sm mx-auto space-y-5 p-6 border rounded-xl shadow-sm bg-white dark:bg-zinc-950"
     >
       <h2 className="text-2xl font-semibold">Sign Up</h2>
 

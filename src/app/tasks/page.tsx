@@ -1,7 +1,7 @@
 'use client';
 
 import React from "react";
-import TaskList from "./_components/TaskList";
+import TaskList from "./components/TaskList";
 import { useRouter } from "next/navigation";
 
 export default function TasksPage() {
@@ -20,7 +20,7 @@ export default function TasksPage() {
       <p className="text-gray-400 text-center mt-2 text-xl">
         Here you can manage your tasks.
       </p>
-      <div className="max-w-2xl mx-auto mt-10">
+      <div className="mx-auto mt-10">
         <TaskList />
       </div>
     </div>

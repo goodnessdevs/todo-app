@@ -15,7 +15,8 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { Loader2, LogOut, User } from "lucide-react";
+import { Loader2, LogOut, UserLock } from "lucide-react";
+
 import { Button } from "./ui/button";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -88,7 +89,7 @@ export default function Navbar() {
               <NavigationMenuLink className="bg-white text-blue-950" asChild>
                 <Link href="/login">
                   <span className="flex justify-between items-center gap-x-2">
-                    Sign in <User className="text-blue-800 w-4 h-4" />
+                    Sign in <UserLock className="text-blue-800 w-4 h-4" />
                   </span>
                 </Link>
               </NavigationMenuLink>

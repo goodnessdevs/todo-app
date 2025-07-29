@@ -94,12 +94,12 @@ export default function Task() {
   };
 
   return (
-    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
       {loading ? (
-        <Spinner />
+        <div className="flex justify-center items-center"><Spinner /> Loading...</div>
       ) : (
         tasks.map((task) => (
-          <Card key={task.id} className="mb-4 w-md md:w-2xl mx-auto">
+          <Card key={task.id} className="mb-4 w-sm md:w-md mx-auto">
             <div className="flex items-center justify-between w-full">
               <div className="p-3 space-y-1.5">
                 <CardTitle>{task.title}</CardTitle>
@@ -132,6 +132,6 @@ export default function Task() {
           </Card>
         ))
       )}
-    </>
+    </div>
   );
 }

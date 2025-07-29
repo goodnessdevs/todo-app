@@ -10,38 +10,40 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogClose,
 } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { Loader2, LogOut } from "lucide-react";
 
 interface User {
-  id: string 
-  name: string
-  email: string
+  id: string;
+  name: string;
+  email: string;
 }
 
 export default function AccountPage() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [user, setUser] = useState<User>();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-  const token = localStorage.getItem("token");
-  const userData = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    const userData = localStorage.getItem("user");
 
-  if (token && userData) {
-    try {
-      setUser(JSON.parse(userData));
-    } catch (err) {
-      console.error("Corrupted user data", err);
-      toast.error("Session error. Please log in again.");
+    if (token && userData) {
+      try {
+        setUser(JSON.parse(userData));
+      } catch (err) {
+        console.error("Corrupted user data", err);
+        toast.error("Session error. Please log in again.");
+        router.push("/login");
+      }
+    } else {
       router.push("/login");
     }
-  } else {
-    router.push("/login");
-  }
-}, []);
-
+  }, []);
 
   const handleLogout = async () => {
     const res = await fetch("/api/auth/logout", {
@@ -83,13 +85,37 @@ export default function AccountPage() {
         </div>
 
         <CardContent className="flex flex-col sm:flex-row gap-4 mt-4">
-          <Button
-            onClick={handleLogout}
-            variant="outline"
-            className="w-full sm:w-auto bg-gray-400"
-          >
-            Logout
-          </Button>
+          <Dialog>
+            <DialogTrigger className="text-center w-full flex justify-center items-center rounded-md p-1.5 gap-x-2 bg-slate-900 hover:bg-slate-700 text-white">
+              Sign out <LogOut className="text-white w-4 h-4" />
+            </DialogTrigger>
+
+            <DialogContent className="space-y-4 w-sm ">
+              <DialogHeader>
+                <DialogTitle className="text-center mt-5">
+                  Are you sure you want to leave?
+                </DialogTitle>
+              </DialogHeader>
+              <div className="text-center space-x-4 flex justify-center items-center">
+                <DialogClose className="bg-gray-900 text-sm hover:bg-gray-700 p-2 rounded-md w-[50px] text-white">
+                  No
+                </DialogClose>
+                <Button
+                  onClick={handleLogout}
+                  className="bg-red-500 hover:bg-red-700"
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 className="animate-spin w-4 h-4 mr-2" />
+                      Logging out...
+                    </>
+                  ) : (
+                    "Yes"
+                  )}
+                </Button>
+              </div>
+            </DialogContent>
+          </Dialog>
 
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
