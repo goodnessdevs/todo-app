@@ -11,7 +11,7 @@ export default function LayoutWrapper({
   children: React.ReactNode;
 }) {
   const pathName = usePathname();
-  const shouldHide = ["/login", "/signup"].includes(pathName)
+  const shouldHide = ["/login", "/signup", "/forgot-password", "/reset-password"].includes(pathName)
   
   return (
     <>

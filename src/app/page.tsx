@@ -20,10 +20,10 @@ export default function Home() {
   if (!hasMounted) return <div className="mt-20"><Spinner /></div>;
 
   return (
-    <div className="my-20 md:my-28 md:mx-40 px-10 md:px-0">
+    <div className="my-20 mt-14 md:my-28 md:mx-40 px-10 md:px-0">
       <div className="md:flex mb-44 justify-start items-center md:gap-x-20">
         <div className="md:text-start text-center space-y-6">
-          <h1 className="text-7xl font-bold">Build your Todo List</h1>
+          <h1 className="text-6xl font-bold">Build your Todo List</h1>
           <p className="text-gray-700 text-2xl">
             A simple application to manage your tasks.
           </p>
