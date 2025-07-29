@@ -102,9 +102,6 @@ export default function LoginForm() {
               {showPassword ? "Hide Password" : "Show Password"}
             </button>
 
-            <Link href="/forgot-password" className="hover:text-blue-600">
-              Forgot password?
-            </Link>
           </div>
         </div>
 

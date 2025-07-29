@@ -20,6 +20,7 @@ import { CalendarIcon } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
+import confetti from "canvas-confetti";
 
 function formatDate(date: Date | undefined) {
   if (!date) return "";
@@ -43,9 +44,9 @@ export default function Create() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem('token'); // or check auth context/state
+    const token = localStorage.getItem("token"); // or check auth context/state
     if (!token) {
-      router.push('/login');
+      router.push("/login");
     }
   }, []);
 
@@ -104,10 +105,15 @@ export default function Create() {
     });
 
     if (response.ok) {
-      toast.success("Task created successfully!");
       setFormData({ title: "", details: "", date: new Date() });
       setValue("");
       setDate(undefined);
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { x: 0.5, y: 0.3 },
+      });
+      toast.success("Task created successfully!");
     } else {
       toast.error("Failed to create task.");
     }

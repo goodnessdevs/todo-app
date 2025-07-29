@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import confetti from "canvas-confetti";
 
 export default function SignupForm() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -37,6 +38,11 @@ export default function SignupForm() {
       if (res.ok) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        confetti({
+          particleCount: 150,
+          spread: 100,
+          origin: { x: 0.5, y: 0.3 },
+        });
         toast.success("Signup successful!");
         router.push("/");
       } else {
